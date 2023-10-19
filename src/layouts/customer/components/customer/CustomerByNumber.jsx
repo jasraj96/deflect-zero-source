@@ -55,9 +55,9 @@ export default function CustomerByNumber() {
           justifyContent: "center",
         }}
       >
-        {number && (
-          <Paper square={false} style={{ width: "45vh", padding: "5%" }} elevation={24}>
-            <Typography variant="h4" gutterBottom>
+        {searchNumber && (
+          <Paper square={false} style={{ width: "70vh", padding: "5%" }} elevation={24}>
+            <Typography variant="body1" gutterBottom>
               {dataByNumber.customerId} : {dataByNumber.name}
             </Typography>
             <List>

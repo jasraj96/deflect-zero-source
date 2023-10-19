@@ -1,18 +1,21 @@
 import React from "react";
-import Header from "../Header";
 import Patch from "./Patch";
 import PatchNumber from "./PatchNumber";
-import { Grid } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 export default function PatchAll() {
   return (
     <>
-      <Grid container>
-        <Grid xs={12} display="flex" justifyContent="center">
-          <Patch />
-        </Grid>
-        <Grid xs={12} display="flex" justifyContent="center">
-          <PatchNumber />
-        </Grid>
+      <Grid container display="flex" justifyContent="center">
+        <div style={{ padding: "50px", display: "flex", justifyContent: "center" }}>
+          <Grid>
+            <Patch />
+          </Grid>
+        </div>
+        <div style={{ padding: "50px", display: "flex", justifyContent: "center" }}>
+          <Grid>
+            <PatchNumber />
+          </Grid>
+        </div>
       </Grid>
     </>
   );

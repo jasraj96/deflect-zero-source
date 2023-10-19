@@ -8,6 +8,8 @@ import CustomerDetails from "./components/customer/CustomerDetails";
 import Customer from "./components/customer/Customer";
 import CustomerByNumber from "./components/customer/CustomerByNumber";
 import PatchAll from "./components/customer/PatchAll";
+import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
+import CustomerProfile from "./components/customer/CustomerProfile";
 export default function index() {
   const [value, setValue] = React.useState("1");
 
@@ -17,30 +19,44 @@ export default function index() {
   };
   return (
     <>
-      <Box sx={{ width: "100%", typography: "body1" }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Details" value="1" />
-              <Tab label="Details By ID" value="2" />
-              <Tab label="Details By Number" value="3" />
-              <Tab label="Change Id or Number" value="4" />
-            </TabList>
-          </Box>
-          <TabPanel value="1">
-            <CustomerDetails />
-          </TabPanel>
-          <TabPanel value="2">
-            <Customer />
-          </TabPanel>
-          <TabPanel value="3">
-            <CustomerByNumber />
-          </TabPanel>
-          <TabPanel value="4">
-            <PatchAll />
-          </TabPanel>
-        </TabContext>
-      </Box>
+      {" "}
+      <DashboardLayout>
+        <Box sx={{ width: "100%", typography: "body1" }}>
+          <TabContext value={value}>
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: "divider",
+                display: "flex",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <TabList onChange={handleChange} aria-label="lab API tabs example">
+                <Tab label="Add Customer" value="1" style={{ padding: "5vh" }} />
+                <Tab label="Details" value="2" style={{ padding: "5vh" }} />
+                <Tab label="Change Email or Number" value="3" style={{ padding: "5vh" }} />
+                <Tab label="Search By Number" value="4" style={{ padding: "5vh" }} />
+                <Tab label="Search By ID" value="5" style={{ padding: "5vh" }} />
+              </TabList>
+            </Box>
+            <TabPanel value="1">
+              <CustomerProfile />
+            </TabPanel>
+            <TabPanel value="2">
+              <CustomerDetails />
+            </TabPanel>
+            <TabPanel value="3">
+              <PatchAll />
+            </TabPanel>
+            <TabPanel value="4">
+              <CustomerByNumber />
+            </TabPanel>
+            <TabPanel value="5">
+              <Customer />
+            </TabPanel>
+          </TabContext>
+        </Box>
+      </DashboardLayout>
     </>
   );
 }

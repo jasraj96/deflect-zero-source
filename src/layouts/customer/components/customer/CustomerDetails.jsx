@@ -18,15 +18,15 @@ export default function CustomerDetails() {
   }, []);
   const column = [
     { id: 1, field: "customerId", headerName: "CustomerId", width: 190 },
-    { id: 2, field: "name", headerName: "name", width: 190 },
-    { id: 3, field: "dateOfBirth", headerName: "dateOfBirth", width: 190 },
-    { id: 4, field: "gender", headerName: "gender", width: 190 },
-    { id: 5, field: "email", headerName: "email", width: 190 },
-    { id: 6, field: "mobileNo", headerName: "mobileNo", width: 190 },
-    { id: 7, field: "address", headerName: "address", width: 190 },
-    { id: 8, field: "accountStatus", headerName: "accountStatus", width: 190 },
-    { id: 9, field: "occupation", headerName: "occupation", width: 190 },
-    { id: 10, field: "nominee", headerName: "nominee", width: 190 },
+    { id: 2, field: "name", headerName: "Name", width: 190 },
+    { id: 3, field: "dateOfBirth", headerName: "Date Of Birth", width: 190 },
+    { id: 4, field: "gender", headerName: "Gender", width: 190 },
+    { id: 5, field: "email", headerName: "Email", width: 190 },
+    { id: 6, field: "mobileNo", headerName: "Mobile Number", width: 190 },
+    { id: 7, field: "address", headerName: "Address", width: 190 },
+    { id: 8, field: "accountStatus", headerName: "Account Status", width: 190 },
+    { id: 9, field: "occupation", headerName: "Occupation", width: 190 },
+    { id: 10, field: "nominee", headerName: "Nominee", width: 190 },
   ];
   const rows = data.map((element) => ({
     id: element.customerId,
@@ -44,16 +44,8 @@ export default function CustomerDetails() {
 
   return (
     <>
-      <Grid
-        container
-        paddingLeft="30vh"
-        paddingRight="5vh"
-        gap={6}
-        display="flex"
-        justifyContent="center"
-      >
+      <Grid container display="flex" justifyContent="center">
         <DataGrid
-          gap={6}
           display="flex"
           justifyContent="center"
           rows={rows}

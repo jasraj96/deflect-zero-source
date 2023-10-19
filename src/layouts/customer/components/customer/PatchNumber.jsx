@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { patchNumber } from "../../data/customerFetchApi";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 export default function PatchNumber() {
   const [data, setData] = useState({
     customerId: "",
     mobileNo: "",
   });
+  const [response, SetResponse] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleValues = async (e) => {
     setData((previous) => ({
@@ -14,9 +26,14 @@ export default function PatchNumber() {
     }));
     console.log(data);
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   async function patchData() {
-    await patchNumber(data);
+    const response = await patchNumber(data);
+    SetResponse(response);
+    setOpen(true);
   }
 
   return (
@@ -68,10 +85,24 @@ export default function PatchNumber() {
           }}
         >
           <Button variant="contained" onClick={patchData}>
-            Search
+            Change
           </Button>
         </Grid>
       </Grid>
+
+      <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
+        <DialogTitle id="responsive-dialog-title">{response}</DialogTitle>
+        {response === "successfully changed" && (
+          <DialogContent>
+            <DialogContentText>Mobile Number has been changed to {data.mobileNo}</DialogContentText>
+          </DialogContent>
+        )}
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

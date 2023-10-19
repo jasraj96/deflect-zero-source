@@ -58,7 +58,7 @@ export default function Customer() {
           justifyContent: "center",
         }}
       >
-        {id && (
+        {search && (
           <Paper square={false} style={{ width: "70vh", padding: "5%" }} elevation={24}>
             <Typography variant="body1" gutterBottom>
               {dataByID.customerId} : {dataByID.name}

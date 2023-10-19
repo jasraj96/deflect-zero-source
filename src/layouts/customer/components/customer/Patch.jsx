@@ -40,7 +40,7 @@ export default function Patch() {
 
   return (
     <div>
-      <Typography variant="h4">Change Email Id</Typography>
+      <Typography variant="h4">Change Email ID</Typography>
       <Grid
         container
         style={{
@@ -87,18 +87,18 @@ export default function Patch() {
           }}
         >
           <Button variant="contained" onClick={patchData}>
-            Search
+            Change
           </Button>
         </Grid>
       </Grid>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
         <DialogTitle id="responsive-dialog-title">{response}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            The Value of the email has been changed to {data.email} {console.log(data)}
-          </DialogContentText>
-        </DialogContent>
+        {response === "successfully changed" && (
+          <DialogContent>
+            <DialogContentText>Email has been changed to {data.email}</DialogContentText>
+          </DialogContent>
+        )}
         <DialogActions>
           <Button onClick={handleClose} autoFocus>
             Ok
