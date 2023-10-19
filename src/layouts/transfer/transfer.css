@@ -1,0 +1,13 @@
+.MuiStepper-root {
+    background: none !important;
+    box-shadow: none !important;
+}
+.Mui-completed {
+    color: black !important;
+}
+.MuiButton-root {
+    color: white !important;
+}
+.MuiStepLabel-label {
+    color: black !important;
+}
