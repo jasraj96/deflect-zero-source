@@ -84,6 +84,8 @@ import dialogContent from "assets/theme-dark/components/dialog/dialogContent";
 import dialogContentText from "assets/theme-dark/components/dialog/dialogContentText";
 import dialogActions from "assets/theme-dark/components/dialog/dialogActions";
 
+import datagrid from "assets/theme-dark/components/datagrid";
+
 export default createTheme({
   breakpoints: { ...breakpoints },
   palette: { ...colors },
@@ -97,7 +99,6 @@ export default createTheme({
     pxToRem,
     rgba,
   },
-
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -154,5 +155,6 @@ export default createTheme({
     MuiDialogContent: { ...dialogContent },
     MuiDialogContentText: { ...dialogContentText },
     MuiDialogActions: { ...dialogActions },
+    MuiDataGrid: { ...datagrid },
   },
 });
