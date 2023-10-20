@@ -62,4 +62,9 @@ export async function postCustomer(customer) {
     body: JSON.stringify(customer),
   });
   console.log(response);
+  if (response.ok) {
+    return "Successfully Created";
+  } else {
+    return `Error in adding,status code -${response.status}`;
+  }
 }

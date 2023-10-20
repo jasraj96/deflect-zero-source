@@ -64,10 +64,7 @@ const CustomerProfile = () => {
     console.log(customer, "sdhvbsvs");
   }
   const handleSubmit = async () => {
-    await postCustomer(customer);
     console.log(customer, "new customer");
-
-    console.log(customer.country, "country");
 
     if (
       customer.name === undefined ||
@@ -78,7 +75,7 @@ const CustomerProfile = () => {
       // customer.lane1 === undefined ||
       // customer.lane2 === undefined ||
       // customer.postalCode === undefined ||
-      customer.documentId === undefined ||
+      customer.documentID === undefined ||
       customer.idNo === undefined ||
       customer.email === undefined ||
       customer.mobileNo === undefined ||
@@ -86,9 +83,12 @@ const CustomerProfile = () => {
       customer.occupation === undefined
     ) {
       setError(true);
-      console.log("erorror is dekj");
+      console.log("error");
     } else {
+      const response = await postCustomer(customer);
+      console.log(customer, "new customer");
       setError(false);
+      SetResponse(response);
       setOpen(true);
     }
   };
@@ -106,6 +106,7 @@ const CustomerProfile = () => {
     float: "right",
     margin: 0,
     color: "red",
+    fontSize:"11px",
   };
 
   return (
@@ -121,7 +122,7 @@ const CustomerProfile = () => {
       <div style={{ padding: "50px" }}>
         <form className="form">
           <h1>Fill your details</h1>
-          <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} margin={2}>
+          <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} margin={2} >
             <Grid item xs={12} sm={12} md={12} lg={6}>
               <TextField
                 style={{ width: "100%" }}
@@ -410,29 +411,13 @@ const CustomerProfile = () => {
           >
             Submit
           </Button>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">{"message"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Successfully created new account
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>Ok</Button>
-            </DialogActions>
-          </Dialog>
         </form>
       </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
         <DialogTitle id="responsive-dialog-title">{response}</DialogTitle>
         {response === "successfully changed" && (
           <DialogContent>
-            <DialogContentText>Email has been changed to {data.email}</DialogContentText>
+            <DialogContentText>Successfully Created</DialogContentText>
           </DialogContent>
         )}
         <DialogActions>
