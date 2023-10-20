@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { patchNumber } from "../../data/customerFetchApi";
+import { patchNumber } from "layouts/customer/services/customerApi";
 import {
   Button,
   Dialog,
@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import MDButton from "components/MDButton";
 export default function PatchNumber() {
   const [data, setData] = useState({
     customerId: "",
@@ -84,17 +85,17 @@ export default function PatchNumber() {
             padding: "10px",
           }}
         >
-          <Button variant="contained" onClick={patchData}>
+          <MDButton variant="contained" color="secondary"  onClick={patchData}>
             Change
-          </Button>
+          </MDButton>
         </Grid>
       </Grid>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
-        <DialogTitle id="responsive-dialog-title">{response}</DialogTitle>
+        <DialogTitle id="responsive-dialog-title" color="secondary">{response}</DialogTitle>
         {response === "successfully changed" && (
           <DialogContent>
-            <DialogContentText>Mobile Number has been changed to {data.mobileNo}</DialogContentText>
+            <DialogContentText style={{color : "grey"}}>Mobile Number has been changed to {data.mobileNo}</DialogContentText>
           </DialogContent>
         )}
         <DialogActions>

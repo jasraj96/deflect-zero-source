@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getFilteredData } from "../../data/customerFetchApi";
+import { getFilteredData } from "layouts/customer/services/customerApi";
 import { Grid } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 export default function CustomerDetails() {
