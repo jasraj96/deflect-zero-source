@@ -81,7 +81,7 @@ export default function Customer() {
                         <List>
                             <ListItem>
                                 <Typography variant="subtitle1" gutterBottom>
-                                    Address:
+                                    Address: 
                                 </Typography>
                                 <Typography variant="body1" gutterBottom>
                                     {" "}
@@ -92,7 +92,7 @@ export default function Customer() {
                         <List>
                             <ListItem>
                                 <Typography variant="subtitle1" gutterBottom>
-                                    customerId :
+                                    Customer ID :
                                 </Typography>
                                 <Typography variant="body1" gutterBottom>
                                     {" "}

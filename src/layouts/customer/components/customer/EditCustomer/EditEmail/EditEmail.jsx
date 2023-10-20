@@ -87,21 +87,25 @@ export default function Patch() {
                         padding: "10px",
                     }}
                 >
-                    <MDButton variant="contained" color="secondary"  onClick={patchData}>
+                    <MDButton variant="contained" color="secondary" onClick={patchData}>
                         Change
                     </MDButton>
                 </Grid>
             </Grid>
 
-            <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title" >
-                <DialogTitle id="responsive-dialog-title" color="secondary">{response}</DialogTitle>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
+                <DialogTitle id="responsive-dialog-title" color="secondary">
+                    {response}
+                </DialogTitle>
                 {response === "successfully changed" && (
                     <DialogContent>
-                        <DialogContentText style={{color : "grey"}}>Email has been changed to {data.email}</DialogContentText>
+                        <DialogContentText style={{ color: "grey" }}>
+                            Email has been changed to {data.email}
+                        </DialogContentText>
                     </DialogContent>
                 )}
                 <DialogActions>
-                    <Button onClick={handleClose} autoFocus >
+                    <Button onClick={handleClose} autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

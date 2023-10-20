@@ -10,6 +10,7 @@ import CustomerByNumber from "./components/customer/SearchCustomer/SearchByNumbe
 import PatchAll from "./components/customer/EditCustomer/Edit";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import CustomerProfile from "./components/customer/AddCustomer/AddCustomer";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 export default function index() {
     const [value, setValue] = React.useState("1");
 
@@ -19,43 +20,46 @@ export default function index() {
     };
     return (
         <>
-            {" "}
             <DashboardLayout>
-                <Box sx={{ width: "100%", typography: "body1" }}>
-                    <TabContext value={value}>
-                        <Box
-                            sx={{
-                                borderBottom: 1,
-                                borderColor: "divider",
-                                display: "flex",
-                                justifyContent: "space-evenly",
-                            }}
+            <DashboardNavbar />
+                <TabContext value={value}>
+                    <Box
+                        sx={{
+                            borderBottom: 1,
+                            borderColor: "divider",
+                            display: "flex",
+                            flexDirection : "column",
+                            justifyContent : "space-evenly"
+                        }}
+                    >
+                        <TabList
+                            onChange={handleChange}
+                            aria-label="lab API tabs example"
+                            sx={{ display:"flex" , flexDirection: "column" }}
                         >
-                            <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                <Tab label="Add Customer" value="1" style={{ padding: "5vh" }} />
-                                <Tab label="Details" value="2" style={{ padding: "5vh" }} />
-                                <Tab label="Change Email or Number" value="3" style={{ padding: "5vh" }} />
-                                <Tab label="Search By Number" value="4" style={{ padding: "5vh" }} />
-                                <Tab label="Search By ID" value="5" style={{ padding: "5vh" }} />
-                            </TabList>
-                        </Box>
-                        <TabPanel value="1">
-                            <CustomerProfile />
-                        </TabPanel>
-                        <TabPanel value="2">
-                            <CustomerDetails />
-                        </TabPanel>
-                        <TabPanel value="3">
-                            <PatchAll />
-                        </TabPanel>
-                        <TabPanel value="4">
-                            <CustomerByNumber />
-                        </TabPanel>
-                        <TabPanel value="5">
-                            <Customer />
-                        </TabPanel>
-                    </TabContext>
-                </Box>
+                            <Tab label="Add Customer" value="1"  />
+                            <Tab label="Details" value="2" />
+                            <Tab label="Change Email or Number" value="3" />
+                            <Tab label="Search By Number" value="4" />
+                            <Tab label="Search By ID" value="5"  />
+                        </TabList>
+                    </Box>
+                    <TabPanel value="1">
+                        <CustomerProfile />
+                    </TabPanel>
+                    <TabPanel value="2">
+                        <CustomerDetails />
+                    </TabPanel>
+                    <TabPanel value="3">
+                        <PatchAll />
+                    </TabPanel>
+                    <TabPanel value="4">
+                        <CustomerByNumber />
+                    </TabPanel>
+                    <TabPanel value="5">
+                        <Customer />
+                    </TabPanel>
+                </TabContext>
             </DashboardLayout>
         </>
     );

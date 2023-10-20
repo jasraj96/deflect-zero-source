@@ -134,7 +134,7 @@ const CustomerProfile = () => {
                                 id="outlined-basic"
                                 label="Enter you name"
                                 name="name"
-                                error={error && customer.name === undefined}
+                                error={(error && customer.name === undefined) || ""}
                                 variant="outlined"
                             />
                             {error && customer.name === undefined ? (
@@ -165,7 +165,6 @@ const CustomerProfile = () => {
                                 <InputLabel id="demo-simple-select-label">Account Status</InputLabel>
                                 <Select
                                     style={{ height: "45px" }}
-                                    defaultValue={"Active"}
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     label="Select your account status"
@@ -263,7 +262,6 @@ const CustomerProfile = () => {
                                 <InputLabel id="demo-simple-select-label">Gender</InputLabel>
                                 <Select
                                     style={{ height: "45px" }}
-                                    defaultValue={"Male"}
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     label="Gender"
@@ -287,7 +285,6 @@ const CustomerProfile = () => {
                             <TextField
                                 style={{ width: "100%" }}
                                 required
-                                defaultValue="1970-01-01"
                                 onChange={handleChange}
                                 id="outlined-basic"
                                 label="Date of birth"
@@ -295,6 +292,7 @@ const CustomerProfile = () => {
                                 error={error && customer.dateOfBirth === undefined}
                                 variant="outlined"
                                 type="date"
+                                InputLabelProps={{ shrink: true }}
                             />
                             {error && customer.dateOfBirth === undefined ? (
                                 <p style={errorStyling}> This field is required</p>
