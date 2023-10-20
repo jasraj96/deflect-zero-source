@@ -9,7 +9,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Check from '@mui/icons-material/Check';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import Transfersuccesscard from './components/TransferSuccessCard/TranferSuccessCard';
+import TransferSuccessCard from './components/TransferSuccessCard/TransferSuccessCard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./transfer.css"
 import { getAccountdetails } from './services/getAccountdetails';
@@ -149,7 +149,7 @@ function Transfer() {
                 <TransferCard trigger={trigger} accountNumber={accountNumber} setTrigger={setTrigger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountDetails={accountDetails} user={user} setActiveStep={setActiveStep} />
             </Grid>}
             {activeStep === 2 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
-                <Transfersuccesscard transferResponse={transferResponse} />
+                <TransferSuccessCard transferResponse={transferResponse} />
             </Grid>}
         </Grid>
 

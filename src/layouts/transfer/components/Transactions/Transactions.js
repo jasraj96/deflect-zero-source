@@ -32,7 +32,7 @@ export default function Transactions() {
             </Grid>
             <Grid item>
                 <TableContainer component={Paper} sx={{ marginTop: "30px" }}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table aria-label="simple table">
                         <TableHead >
                             <TableRow sx={{ background: "linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))", color: "white" }}>
                                 <TableCell>Beneficiary Name</TableCell>

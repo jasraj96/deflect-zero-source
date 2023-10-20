@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { IconButton } from '@mui/material'
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 
-function Transfersuccesscard(props) {
+function TransferSuccessCard(props) {
     const { transferResponse } = props
 
     return (
@@ -72,8 +72,8 @@ function Transfersuccesscard(props) {
     )
 }
 
-Transfersuccesscard.propTypes = {
+TransferSuccessCard.propTypes = {
     transferResponse: PropTypes.object
 }
 
-export default Transfersuccesscard
+export default TransferSuccessCard
