@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { notificationAPI } from "../../../services/notificationAPI";
+import { notificationAPI } from "services/notification.service";
 import AddNotification from "./AddNotification";
 import { Grid, TextField, Button, Box } from "@mui/material";
 import Table from "@mui/material/Table";

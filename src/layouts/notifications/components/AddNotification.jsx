@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid, TextField, Button, Typography } from "@mui/material";
-import { addNewNotification } from "../../../services/addNewNotification";
+import { addNewNotification } from "services/notification.service";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";

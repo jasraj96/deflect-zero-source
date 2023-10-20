@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { TextField, Button, Paper, Typography, Grid } from '@mui/material';
-import { postBill } from 'services/billing.services';
+import { postBill } from 'services/PostBills';
 
 const BillForm = () => {
   const [billDueDate, setBillDueDate] = useState('');
