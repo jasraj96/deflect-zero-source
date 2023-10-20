@@ -4,17 +4,23 @@ import { addNewNotification } from "../../../services/addNewNotification";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import AddIcon from "@mui/icons-material/Add";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { Divider, Paper } from "@mui/material";
+import { Paper, Snackbar, Alert, InputLabel, FormControl } from "@mui/material";
+import MDButton from "components/MDButton";
+import MDTypography from "components/MDTypography";
+import MuiAlert from "@mui/material/Alert";
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
+
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />; // important for snackbar
+    });
 });
 const AddNotification = () => {
     const [open, setOpen] = useState(false);
@@ -36,16 +42,18 @@ const AddNotification = () => {
     function handleClickClose() {
         setOpen(false);
     }
-    // function handleNewNotificationAmount(e) {
-    //   setNotificationAmount((prevState) => {
-    //     return { ...prevState, valueMap: e.target.value };
-    //   });
-    //   setTemplateData((prevState=>{
-    //     return {...prevState, ...notificationAmount}
-    //   }))
-    //   console.log(templateData);
-    // }
+    // snackbar
+    const [openSnack, setOpenSnack] = React.useState(false);
 
+    const handleSnackClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+
+        setOpenSnack(false);
+    };
+
+    //snackbar end
     const handleClickOpen = () => {
         setOpen((prevState) => {
             return !prevState;
@@ -56,11 +64,16 @@ const AddNotification = () => {
         addNewNotification(templateData);
         setOpen(false);
         console.log(templateData);
+        setOpenSnack(true);
     };
-
     return (
         <div>
-            <Button variant="contained" startIcon={<AddIcon />} sx={{ mt: 6 }} onClick={handleClickOpen}>
+            <Snackbar open={openSnack} autoHideDuration={2000} onClose={handleSnackClose}>
+                <Alert onClose={handleSnackClose} severity="info" sx={{ width: "100%" }}>
+                    Request has been submited!
+                </Alert>
+            </Snackbar>
+            <Button variant="contained" startIcon={<AddIcon />} sx={{ mt: 2 }} onClick={handleClickOpen}>
                 Add New Notification
             </Button>
             <Dialog fullScreen open={open} onClose={handleClickOpen} TransitionComponent={Transition}>
@@ -72,52 +85,61 @@ const AddNotification = () => {
                         <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                             Add a New Notification
                         </Typography>
-                        <Button autoFocus color="inherit" onClick={handleSave}>
-                            SUBMIT
-                        </Button>
                     </Toolbar>
                 </AppBar>
                 <Grid display="flex" alignItems="center" justifyContent="center">
                     <Paper elevation={5} sx={{ padding: 10 }}>
-                        <List>
-                            <ListItem sx={{ marginBottom: 2 }}>
-                                <h3>Enter Details</h3>
-                            </ListItem>
-                            <ListItem>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} textAlign="center">
+                                <MDTypography color="info" fontWeight="bold">
+                                    ENTER THE DETAILS
+                                </MDTypography>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <TextField
+                                    fullWidth
                                     name="customerID"
                                     label="Customer ID"
                                     id="outlined-size-small"
                                     size="large"
                                     onChange={handleNewNotification}
                                     value={templateData.customerID}
+                                    required
                                 />
-                            </ListItem>
-                            <Divider variant="middle" />
-                            <ListItem>
-                                <Select
-                                    sx={{ padding: 1.5 }}
-                                    name="templateID"
-                                    value={templateData.templateID}
-                                    label="TemplateId"
-                                    onChange={handleNewNotification}
-                                >
-                                    <MenuItem value={"CREDIT"}>CREDIT</MenuItem>
-                                    <MenuItem value={"DEBIT"}>DEBIT</MenuItem>
-                                </Select>
-                            </ListItem>
-                            <Divider variant="middle" />
-                            <ListItem>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <TextField
+                                    fullWidth
                                     type="number"
                                     label="Amount"
                                     id="outlined-size-small"
                                     size="large"
                                     onChange={handleNewNotification}
                                     name="valueMap"
+                                    value={templateData.valueMap.AMOUNT}
                                 />
-                            </ListItem>
-                        </List>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                                    <Select
+                                        sx={{ padding: 1.5 }}
+                                        name="templateID"
+                                        value={templateData.templateID}
+                                        label="Type"
+                                        onChange={handleNewNotification}
+                                    >
+                                        <MenuItem value={"CREDIT"}>CREDIT</MenuItem>
+                                        <MenuItem value={"DEBIT"}>DEBIT</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <MDButton variant="contained" color="success" onClick={handleSave} fullWidth>
+                                    Add
+                                </MDButton>
+                            </Grid>
+                        </Grid>
                     </Paper>
                 </Grid>
             </Dialog>

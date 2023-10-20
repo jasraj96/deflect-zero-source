@@ -1,8 +1,10 @@
 import React from "react";
-import NotificationID from "./components/NotificationID";
+import NotificationID from "./NotificationByID";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import AddNotification from "./components/AddNotification";
+
+// index.js is the entry point
+
 const Notifications = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
