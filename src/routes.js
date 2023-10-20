@@ -31,6 +31,8 @@ import SignUp from "layouts/authentication/sign-up";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import TraferMain from "layouts/transfer/TransferMain";
+
 
 const routes = [
   {
@@ -59,11 +61,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "RTL",
-    key: "rtl",
+    name: "Transfer Amount",
+    key: "transfer",
     icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/rtl",
-    component: <RTL />,
+    route: "/transferamount",
+    component: <TraferMain />,
   },
   {
     type: "collapse",
@@ -89,6 +91,7 @@ const routes = [
     route: "/authentication/sign-in",
     component: <SignIn />,
   },
+
   {
     type: "collapse",
     name: "Sign Up",

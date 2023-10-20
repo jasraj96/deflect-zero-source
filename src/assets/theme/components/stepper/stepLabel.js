@@ -17,17 +17,17 @@ const stepLabel = {
       marginTop: `${pxToRem(8)} !important`,
       fontWeight: fontWeightRegular,
       fontSize: size.xs,
-      color: "#9fc9ff",
+      // color: "#9fc9ff",
       textTransform: "uppercase",
 
       "&.Mui-active": {
         fontWeight: `${fontWeightRegular} !important`,
-        color: `${rgba(white.main, 0.8)} !important`,
+        // color: `${rgba(white.main, 0.8)} !important`,
       },
 
       "&.Mui-completed": {
         fontWeight: `${fontWeightRegular} !important`,
-        color: `${rgba(white.main, 0.8)} !important`,
+        // color: `${rgba(white.main, 0.8)} !important`,
       },
     },
   },
