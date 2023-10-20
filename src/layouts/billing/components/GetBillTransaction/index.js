@@ -1,9 +1,8 @@
 
 import { useState } from "react";
-import { getBillsTransaction } from "services/GetBillTransaction";
+import { getBillsTransaction } from "services/billing.services";
 import { Grid, TextField, FormControl, Typography, Paper } from "@mui/material"
 import { Button, Dialog, DialogTitle, Table, TableContainer, TableCell, DialogContent, TableHead, TableRow, TableBody, DialogActions } from '@mui/material';
-import { getBillsTransaction } from "services/GetBillTransaction";
 
 function GetBillTransaction() {
   const [billId, setBillId] = useState('')
