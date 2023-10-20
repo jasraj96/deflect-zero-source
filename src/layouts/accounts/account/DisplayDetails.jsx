@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
+import { displayDetails } from "services/accounts.service";
 
 
 function DisplayDetails(accountNo) {
@@ -21,24 +22,24 @@ function DisplayDetails(accountNo) {
 
 
 
-  const displayDetails = async () => {
-    try {
-      const response = await fetch(
-        `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`
-      );
+  // const displayDetails = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`
+  //     );
 
-      let data = await response.json();
-      setAccountContent(data);
+  //     let data = await response.json();
+  //     setAccountContent(data);
 
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
   console.log(accountNo)
   console.log(accountContent.accountNumber);
 
   useEffect(() => {
-    displayDetails();
+    displayDetails(accountNo,setAccountContent);
   }, [accountNo]);
 
   return (
