@@ -28,6 +28,7 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import Customer from "layouts/customer";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -46,8 +47,21 @@ const routes = [
 
   {
     type: "collapse",
+<<<<<<< HEAD
     name: "Account",
     key: "account",
+=======
+    name: "Customer Details",
+    key: "Customer",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/customer",
+    component: <Customer />,
+  },
+  {
+    type: "collapse",
+    name: "Tables",
+    key: "tables",
+>>>>>>> feature/customer-profile
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/accounts",
     component: <AccountsMain />,
@@ -84,6 +98,7 @@ const routes = [
     route: "/profile",
     component: <Profile />,
   },
+
   {
     type: "collapse",
     name: "Sign In",
