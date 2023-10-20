@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CreateAccount from '../account/CreateAccount';
 import TransferServiceRequest from '../account/TransferServiceRequest';
-import Dashboard from 'layouts/dashboard';
 import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
+import GetAccount from '../account/GetAccount';
 
 
 
@@ -56,14 +56,18 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="GET ACCOUNT " {...a11yProps(0)} />
-          <Tab label="TRANSFER DETAILS" {...a11yProps(1)} />
+          <Tab label="CREATE ACCOUNT " {...a11yProps(0)} />
+          <Tab label="GET ACCOUNT " {...a11yProps(1)} />
+          <Tab label="TRANSFER DETAILS" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <Main value={value} index={0}>
       <CreateAccount/>
       </Main>
       <Main value={value} index={1}>
+      <GetAccount/>
+      </Main>
+      <Main value={value} index={2}>
        <TransferServiceRequest/>
       </Main>
      

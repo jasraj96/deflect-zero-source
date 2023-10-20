@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Grid } from "@mui/material";
 
 
 function DisplayDetails( accountNo ) {
@@ -42,28 +43,28 @@ function DisplayDetails( accountNo ) {
 
   return (
     <div>
-      <TableContainer component={Paper}>
-        <Table aria-label="User Table">
-          <TableHead>
-            <TableCell>Customer ID</TableCell>
-            <TableCell>Account Number</TableCell>
-            <TableCell>Balance</TableCell>
-            <TableCell>CURRENCY</TableCell>
-            <TableCell>TRANSACTION LIMIT</TableCell>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>{accountContent.customerId}</TableCell>
-              <TableCell>{accountContent.accountNumber}</TableCell>
-              <TableCell>{accountContent.balance}</TableCell>
-              <TableCell>{accountContent.currency}</TableCell>
-              <TableCell>{accountContent.transactionLimit}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-   <DisplayTransactionDetails accountNo={accountNo} />
-    </div>
+    <TableContainer component={Paper}>
+      <Table aria-label="User Table">
+        <TableHead>
+          <TableCell>Customer ID</TableCell>
+          <TableCell>Account Number</TableCell>
+          <TableCell>Balance</TableCell>
+          <TableCell>CURRENCY</TableCell>
+          <TableCell>TRANSACTION LIMIT</TableCell>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>{accountContent.customerId}</TableCell>
+            <TableCell>{accountContent.accountNumber}</TableCell>
+            <TableCell>{accountContent.balance}</TableCell>
+            <TableCell>{accountContent.currency}</TableCell>
+            <TableCell>{accountContent.transactionLimit}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+ <DisplayTransactionDetails accountNo={accountNo} />
+  </div>
   );
 }
 

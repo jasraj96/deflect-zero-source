@@ -74,7 +74,7 @@ console.log(transferDetails)
         </Grid>
       </Grid>
     </Box>
-     {transferData?.beneficiaryAccountNumber && <Card transferData={transferData}/>}
+     {transferData.beneficiaryAccountNumber && <Card transferData={transferData}/>}
     </div>
   )
 }
