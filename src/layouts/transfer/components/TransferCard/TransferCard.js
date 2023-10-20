@@ -62,7 +62,7 @@ function TransferCard(props) {
           label="Sender Bank account number"
           variant="outlined" />
         <Button
-          onClick={() => { setTriger((prevState) => !prevState) }}
+          onClick={() => { setTrigger((prevState) => !prevState) }}
           fullWidth
           variant="contained" >
           SUBMIT
