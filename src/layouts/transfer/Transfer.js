@@ -113,7 +113,7 @@ function Transfer() {
         comments: ""
     })
     const [accountNumber, setAccountnumber] = useState(1234232632)
-    const [triger, setTriger] = useState(false)
+    const [trigger, setTrigger] = useState(false)
 
     const steps = ['Enter account details', 'Transaction successful'];
 
@@ -146,7 +146,7 @@ function Transfer() {
                 </Grid>}
 
             {activeStep === 1 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
-                <TransferCard triger={triger} accountNumber={accountNumber} setTriger={setTriger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountDetails={accountDetails} user={user} setActiveStep={setActiveStep} />
+                <TransferCard trigger={trigger} accountNumber={accountNumber} setTrigger={setTrigger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountDetails={accountDetails} user={user} setActiveStep={setActiveStep} />
             </Grid>}
             {activeStep === 2 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
                 <Transfersuccesscard transferResponse={transferResponse} />

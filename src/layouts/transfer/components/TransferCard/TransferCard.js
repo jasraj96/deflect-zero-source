@@ -6,7 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { makeTransfer } from 'layouts/transfer/services/makeTransfer';
 
 function TransferCard(props) {
-  const { accountDetails, user, setTransferresponse, setActiveStep, setAccountnumber, accountNumber, setTriger, trigger } = props
+  const { accountDetails, user, setTransferresponse, setActiveStep, setAccountnumber, accountNumber, setTrigger, trigger } = props
   const [transfer, setTransfer] = useState({
     amount: 0,
     beneficiaryAccountNumber: "",
@@ -166,7 +166,7 @@ TransferCard.propTypes = {
   setActiveStep: PropTypes.func,
   setAccountnumber: PropTypes.func,
   accountNumber: PropTypes.number,
-  setTriger: PropTypes.func,
+  setTrigger: PropTypes.func,
   trigger: PropTypes.bool
 }
 
