@@ -1,3 +1,5 @@
+
+
 export const getAccountdetails = async (setAccountdetails, setUser, accountNumber) => {
     try {
         const data = await fetch(`http://172.16.4.98:8080/account/get-account?accountNumber=${accountNumber}`)

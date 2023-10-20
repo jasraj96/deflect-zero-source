@@ -51,7 +51,7 @@ export default function Transactions() {
                                 >
                                     <TableCell align="right">{element?.senderName}</TableCell>
                                     <TableCell align="right">{element?.senderAccountNumber}</TableCell>
-                                    <TableCell scope="row">{element.beneficiaryName} </TableCell>
+                                    <TableCell align='right'>{element.beneficiaryName} </TableCell>
                                     <TableCell align="right">{element?.beneficiaryAccountNumber}</TableCell>
                                     <TableCell align="right">{element?.amount}</TableCell>
                                     <TableCell align="right" sx={{ color: `${element?.paymentStatus === "SUCCESS" ? "green" : "red"}`, fontWeight: "400" }}>{element.paymentStatus}</TableCell>
