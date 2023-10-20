@@ -1,12 +1,12 @@
 import { TableCell, TableRow, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
-function DisplayTransactionDetails( accountNo ) {
+function DisplayTransactionDetails(accountNo) {
     const [transactions, setTransactions] = useState([]);
 
     const displayTransaction = async () => {
         try {
-            const response = await fetch(`http://172.16.4.98:8080/account/get-ledger?accountNumber=${accountNo}`);
+            const response = await fetch(`https://1c89-103-141-55-30.ngrok-free.app/account/get-ledger?accountNumber=${accountNo}`);
 
             await response.json().then((data) => {
                 setTransactions(data);
@@ -27,7 +27,7 @@ function DisplayTransactionDetails( accountNo ) {
             <table style={{ width: "100%", tableLayout: "fixed" }}>
                 {transactions && transactions.length > 0 ? (
                     <div>
-                        {transactions.map((data,index) => {
+                        {transactions.map((data, index) => {
                             return (
                                 <TableRow key={index} style={{ textAlign: "center", width: "30%" }}>
                                     <TableCell style={{ textAlign: "left", padding: "5px" }}>

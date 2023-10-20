@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
 
 
-function DisplayDetails( accountNo ) {
+function DisplayDetails(accountNo) {
   const [accountContent, setAccountContent] = useState({
     customerId: "",
     accountNumber: "",
@@ -19,12 +19,12 @@ function DisplayDetails( accountNo ) {
     transactionLimit: 50000,
   });
 
- 
+
 
   const displayDetails = async () => {
     try {
       const response = await fetch(
-        `http://172.16.4.98:8080/account/get-account?accountNumber=${accountNo}`
+        `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`
       );
 
       let data = await response.json();
@@ -36,35 +36,35 @@ function DisplayDetails( accountNo ) {
   };
   console.log(accountNo)
   console.log(accountContent.accountNumber);
-  
+
   useEffect(() => {
     displayDetails();
   }, [accountNo]);
 
   return (
     <div>
-    <TableContainer component={Paper}>
-      <Table aria-label="User Table">
-        <TableHead>
-          <TableCell>Customer ID</TableCell>
-          <TableCell>Account Number</TableCell>
-          <TableCell>Balance</TableCell>
-          <TableCell>CURRENCY</TableCell>
-          <TableCell>TRANSACTION LIMIT</TableCell>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell>{accountContent.customerId}</TableCell>
-            <TableCell>{accountContent.accountNumber}</TableCell>
-            <TableCell>{accountContent.balance}</TableCell>
-            <TableCell>{accountContent.currency}</TableCell>
-            <TableCell>{accountContent.transactionLimit}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
- <DisplayTransactionDetails accountNo={accountNo} />
-  </div>
+      <TableContainer component={Paper}>
+        <Table aria-label="User Table">
+          <TableHead>
+            <TableCell>Customer ID</TableCell>
+            <TableCell>Account Number</TableCell>
+            <TableCell>Balance</TableCell>
+            <TableCell>CURRENCY</TableCell>
+            <TableCell>TRANSACTION LIMIT</TableCell>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>{accountContent.customerId}</TableCell>
+              <TableCell>{accountContent.accountNumber}</TableCell>
+              <TableCell>{accountContent.balance}</TableCell>
+              <TableCell>{accountContent.currency}</TableCell>
+              <TableCell>{accountContent.transactionLimit}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <DisplayTransactionDetails accountNo={accountNo} />
+    </div>
   );
 }
 

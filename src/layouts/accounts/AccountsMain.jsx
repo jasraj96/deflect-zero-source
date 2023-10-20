@@ -4,10 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import CreateAccount from '../account/CreateAccount';
-import TransferServiceRequest from '../account/TransferServiceRequest';
+import CreateAccount from './account/CreateAccount';
+import TransferServiceRequest from './account/TransferServiceRequest';
 import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
-import GetAccount from '../account/GetAccount';
+import GetAccount from './account/GetAccount';
 
 
 
@@ -20,7 +20,7 @@ function Main(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
+    // {...other}
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
@@ -53,25 +53,25 @@ export default function BasicTabs() {
 
   return (
     <DashboardLayout>
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="CREATE ACCOUNT " {...a11yProps(0)} />
-          <Tab label="GET ACCOUNT " {...a11yProps(1)} />
-          <Tab label="TRANSFER DETAILS" {...a11yProps(2)} />
-        </Tabs>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab label="CREATE ACCOUNT " {...a11yProps(0)} />
+            <Tab label="GET ACCOUNT " {...a11yProps(1)} />
+            <Tab label="TRANSFER DETAILS" {...a11yProps(2)} />
+          </Tabs>
+        </Box>
+        <Main value={value} index={0}>
+          <CreateAccount />
+        </Main>
+        <Main value={value} index={1}>
+          <GetAccount />
+        </Main>
+        <Main value={value} index={2}>
+          <TransferServiceRequest />
+        </Main>
+
       </Box>
-      <Main value={value} index={0}>
-      <CreateAccount/>
-      </Main>
-      <Main value={value} index={1}>
-      <GetAccount/>
-      </Main>
-      <Main value={value} index={2}>
-       <TransferServiceRequest/>
-      </Main>
-     
-    </Box>
     </DashboardLayout>
   );
 }
