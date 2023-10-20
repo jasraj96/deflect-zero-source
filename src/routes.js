@@ -23,9 +23,7 @@
 import Dashboard from "layouts/dashboard";
 import AccountsMain from "./layouts/accounts/AccountsMain"
 import Billing from "layouts/billing";
-import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
-import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import Customer from "layouts/customer";
@@ -44,24 +42,18 @@ const routes = [
     route: "/dashboard",
     component: <Dashboard />,
   },
-
   {
     type: "collapse",
-<<<<<<< HEAD
-    name: "Account",
-    key: "account",
-=======
-    name: "Customer Details",
-    key: "Customer",
-    icon: <Icon fontSize="small">person</Icon>,
+    name: "Customers",
+    key: "customer",
+    icon: <Icon fontSize="small">table_view</Icon>,
     route: "/customer",
     component: <Customer />,
   },
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
->>>>>>> feature/customer-profile
+    name: "Account",
+    key: "account",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/accounts",
     component: <AccountsMain />,
@@ -76,10 +68,10 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Transfer Amount",
-    key: "transfer",
+    name: "Transfers",
+    key: "transfers",
     icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/transferamount",
+    route: "/transfers",
     component: <TraferMain />,
   },
   {
@@ -92,22 +84,12 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
-    component: <Profile />,
-  },
-
-  {
-    type: "collapse",
     name: "Sign In",
     key: "sign-in",
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
   },
-
   {
     type: "collapse",
     name: "Sign Up",
