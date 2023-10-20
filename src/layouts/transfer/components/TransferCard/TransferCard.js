@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
 import { Button, FormControl, FormControlLabel, FormLabel, Grid, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { makeTransfer } from 'layouts/transfer/services/makeTransfer';
+import { createTransfer } from 'layouts/transfer/services/transactions.service';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 
 function TransferCard(props) {
   const { accountDetails, user, setTransferresponse, setActiveStep, setAccountnumber, accountNumber, setTrigger, trigger } = props
@@ -48,6 +50,9 @@ function TransferCard(props) {
         },
       }}
     >
+
+
+
       <h5>Enter Transaction Details</h5>
       <div style={{
         width: "100%",
@@ -150,7 +155,7 @@ function TransferCard(props) {
         label="Remarks(optional)"
         variant="outlined" />
       <Button
-        onClick={() => { makeTransfer(transfer, setTransferresponse, setActiveStep) }}
+        onClick={() => { createTransfer(transfer, setTransferresponse, setActiveStep) }}
         fullWidth variant="contained"
         endIcon={<ArrowForwardIcon />}>
         Transfer Amount

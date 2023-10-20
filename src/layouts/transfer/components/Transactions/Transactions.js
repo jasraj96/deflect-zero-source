@@ -10,7 +10,8 @@ import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Grid } from '@mui/material';
-import { getTransactions } from 'layouts/transfer/services/getTransactions';
+import { getTransactions } from 'layouts/transfer/services/transactions.service';
+
 
 
 export default function Transactions() {

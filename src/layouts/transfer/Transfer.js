@@ -12,7 +12,7 @@ import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector
 import TransferSuccessCard from './components/TransferSuccessCard/TransferSuccessCard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./transfer.css"
-import { getAccountdetails } from './services/getAccountdetails';
+import { getAccountdetails } from './services/account.service';
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
