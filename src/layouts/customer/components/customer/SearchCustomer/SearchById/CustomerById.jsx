@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCustomerByID } from "layouts/customer/services/customerApi";
+import { getCustomerByID } from "services/customer.service";
 import { Typography, Paper, List, ListItem, TextField, Button, Grid } from "@mui/material";
 import MDButton from "components/MDButton";
 

@@ -15,7 +15,7 @@ import {
     DialogTitle,
     DialogActions,
 } from "@mui/material";
-import { postCustomer } from "layouts/customer/services/customerApi";
+import { postCustomer } from "services/customer.service";
 import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 
@@ -426,9 +426,9 @@ const CustomerProfile = () => {
                     </DialogContent>
                 )}
                 <DialogActions>
-                    <Button onClick={handleClose} autoFocus>
+                    <MDButton variant="contained" color="secondary" onClick={handleClose} autoFocus>
                         Ok
-                    </Button>
+                    </MDButton>
                 </DialogActions>
             </Dialog>
         </Box>

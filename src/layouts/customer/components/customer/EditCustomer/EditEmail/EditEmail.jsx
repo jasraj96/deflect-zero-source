@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { patchEmail } from "layouts/customer/services/customerApi";
+import { patchEmail } from "services/customer.service";
 import {
     Button,
     Dialog,
@@ -105,9 +105,9 @@ export default function Patch() {
                     </DialogContent>
                 )}
                 <DialogActions>
-                    <Button onClick={handleClose} autoFocus>
+                    <MDButton variant="contained" color="secondary" onClick={handleClose} autoFocus>
                         Ok
-                    </Button>
+                    </MDButton>
                 </DialogActions>
             </Dialog>
         </div>
