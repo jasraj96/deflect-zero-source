@@ -1,6 +1,6 @@
 //fetch
 export async function getCustomerByID(customerId) {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer?customerId=${customerId}`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer?customerId=${customerId}`;
     const response = await fetch(apiUrl, {
         headers: {
             accept: "application/json",
@@ -12,7 +12,7 @@ export async function getCustomerByID(customerId) {
     return data;
 }
 export async function getCustomerByMobileNo(customerNumber) {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer/customer-mobile?mobileNo=${customerNumber}`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer/customer-mobile?mobileNo=${customerNumber}`;
     const response = await fetch(apiUrl, {
         headers: {
             accept: "application/json",
@@ -25,7 +25,7 @@ export async function getCustomerByMobileNo(customerNumber) {
 }
 //patch
 export async function patchEmail(data) {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer/email`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer/email`;
     const response = await fetch(apiUrl, {
         method: "PATCH",
         headers: {
@@ -45,7 +45,7 @@ export async function patchEmail(data) {
 }
 //patch
 export async function patchNumber(data) {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer/mobile`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer/mobile`;
     const response = await fetch(apiUrl, {
         method: "PATCH",
         headers: {
@@ -64,7 +64,7 @@ export async function patchNumber(data) {
     }
 }
 export async function getFilteredData() {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer/query`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer/query`;
     const response = await fetch(apiUrl, {
         headers: {
             accept: "application/json",
@@ -77,7 +77,7 @@ export async function getFilteredData() {
 }
 //post
 export async function postCustomer(customer) {
-    const apiUrl = `https://4a4d-103-141-55-30.ngrok-free.app/customer-profile/customer`;
+    const apiUrl = `https://6e31-103-141-55-30.ngrok-free.app/customer-profile/customer`;
     // ?accountStatus=${accountStatus}&address=${address}&customerId=${customerId}&dateOFBirth=${dateOfBirth}&documentId=${documentId}&email=${email}&gender=${gender}&idNo=${idNo}&mobilNo=${mobileNo}&name=${name}&nominee=${nominee}&occupation=${occupation}
     const response = await fetch(apiUrl, {
         method: "POST",
