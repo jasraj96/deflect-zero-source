@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
+import { createAccount } from "services/accounts.service";
 
 
 
@@ -14,12 +15,7 @@ function CreateAccount() {
 
   const createTheAccount = async () => {
     try {
-      const response = await fetch(
-        `https://1c89-103-141-55-30.ngrok-free.app/account/account-number?customerId=${customerId}`,
-        { method: "POST" }
-      );
-
-      const data = await response.json();
+      const accountNo = createAccount(customerId);
       setAccountNo(data);
       console.log(data)
     } catch (error) {
