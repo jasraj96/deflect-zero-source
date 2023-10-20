@@ -1,15 +1,16 @@
 const datagrid = {
-  styleOverrides: {
-    root: {
+    styleOverrides: {
+        root: {},
+        cell: {
+            color: "white",
+        },
+        columnHeaderTitle: {
+            color: "white",
+        },
+        root : {
+            color: "white",
+        },
     },
-    cell: {
-      color: "white"
-    },
-    columnHeaderTitle: {
-      color: "white"
-    },
-    
-  },
 };
 
 export default datagrid;

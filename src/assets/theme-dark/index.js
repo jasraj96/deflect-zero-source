@@ -156,5 +156,6 @@ export default createTheme({
     MuiDialogContentText: { ...dialogContentText },
     MuiDialogActions: { ...dialogActions },
     MuiDataGrid: { ...datagrid },
+    MuiTablePagination : {...datagrid}
   },
 });

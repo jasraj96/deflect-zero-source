@@ -1,6 +1,6 @@
 import React from "react";
-import Patch from "./Patch";
-import PatchNumber from "./PatchNumber";
+import Patch from "./EditEmail/EditEmail";
+import PatchNumber from "./EditNumber/EditNumber";
 import { Grid, Paper } from "@mui/material";
 export default function PatchAll() {
   return (
