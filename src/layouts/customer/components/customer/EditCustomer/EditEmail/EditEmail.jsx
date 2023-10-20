@@ -59,7 +59,7 @@ export default function Patch() {
                 >
                     <TextField
                         id="outlined-basic"
-                        label="Id"
+                        label="ID"
                         variant="outlined"
                         size="small"
                         onChange={handleValues}
