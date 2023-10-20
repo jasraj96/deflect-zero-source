@@ -48,7 +48,7 @@ import SignUp from "layouts/authentication/sign-up";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Transfer from "layouts/transfer/Transfer";
-import Transfertab from "layouts/transfer/Transfertab";
+import Transfertab from "layouts/transfer/TransferMain";
 
 
 const routes = [

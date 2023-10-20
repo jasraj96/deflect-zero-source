@@ -12,7 +12,7 @@ import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector
 import Transfersuccesscard from './components/TransferSuccessCard/TranferSuccessCard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./transfer.css"
-import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
+import { getAccountdetails } from './services/getAccountdetails';
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -88,43 +88,38 @@ QontoStepIcon.propTypes = {
 };
 
 
-
 function Transfer() {
-    const [accountdetails, setAccountdetails] = useState({})
+    const [accountDetails, setAccountdetails] = useState({
+        customerId: "",
+        accountNumber: "",
+        balance: 0,
+        currency: "",
+        transactionLimit: 0
+    })
     const [user, setUser] = useState({})
     const [activeStep, setActiveStep] = React.useState(1);
-    const [transferresponse, setTransferresponse] = useState({})
-    const [accountnumber, setAccountnumber] = useState(1234232632)
+    const [transferResponse, setTransferresponse] = useState({
+        senderAccountNumber: "",
+        senderName: "",
+        amount: 1,
+        charges: null,
+        dateTime: "",
+        transactionID: "",
+        beneficiaryAccountNumber: "",
+        beneficiaryName: "",
+        paymentStatus: "",
+        currency: "",
+        paymentMethod: "",
+        comments: ""
+    })
+    const [accountNumber, setAccountnumber] = useState(1234232632)
     const [triger, setTriger] = useState(false)
 
     const steps = ['Enter account details', 'Transaction successful'];
 
     useEffect(() => {
-        const getAccountdetails = async () => {
-            try {
-                const data = await fetch(`http://172.16.4.98:8080/account/get-account?accountNumber=${accountnumber}`)
-                data.json().then(accountdetails => {
-                    setAccountdetails(accountdetails)
-                    getUser(accountdetails)
-                    console.log(accountdetails)
-                })
-            } catch (e) {
-
-            }
-
-        }
-        const getUser = async (accountdetails) => {
-            try {
-                const user = await fetch(`http://172.16.4.87:8083/customer-profile/customer?customerId=${accountdetails.customerId}`)
-                await user.json().then(data => {
-                    setUser(data)
-                })
-            } catch (e) {
-            }
-        }
-        getAccountdetails()
+        getAccountdetails(setAccountdetails, setUser, accountNumber)
     }, [triger])
-
 
     return (
 
@@ -151,13 +146,12 @@ function Transfer() {
                 </Grid>}
 
             {activeStep === 1 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
-                <TransferCard triger={triger} accountnumber={accountnumber} setTriger={setTriger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountdetails={accountdetails} user={user} setActiveStep={setActiveStep} />
+                <TransferCard triger={triger} accountNumber={accountNumber} setTriger={setTriger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountDetails={accountDetails} user={user} setActiveStep={setActiveStep} />
             </Grid>}
             {activeStep === 2 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
-                <Transfersuccesscard transferresponse={transferresponse} />
+                <Transfersuccesscard transferResponse={transferResponse} />
             </Grid>}
         </Grid>
-
 
     )
 }
