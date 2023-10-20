@@ -4,14 +4,14 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import CreateAccount from '../account/CreateAccount';
-import TransferServiceRequest from '../account/TransferServiceRequest';
+import CreateAccount from './CreateAccount';
+import TransferServiceRequest from './TransferServiceRequest';
 import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
-import GetAccount from '../account/GetAccount';
+import GetAccount from './GetAccount';
 
 
 
-function Main(props) {
+function MainAccounts(props) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -31,7 +31,7 @@ function Main(props) {
   );
 }
 
-Main.propTypes = {
+MainAccounts.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
@@ -61,15 +61,15 @@ export default function BasicTabs() {
           <Tab label="TRANSFER DETAILS" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <Main value={value} index={0}>
+      <MainAccounts value={value} index={0}>
       <CreateAccount/>
-      </Main>
-      <Main value={value} index={1}>
+      </MainAccounts>
+      <MainAccounts value={value} index={1}>
       <GetAccount/>
-      </Main>
-      <Main value={value} index={2}>
+      </MainAccounts>
+      <MainAccounts value={value} index={2}>
        <TransferServiceRequest/>
-      </Main>
+      </MainAccounts>
      
     </Box>
     </DashboardLayout>

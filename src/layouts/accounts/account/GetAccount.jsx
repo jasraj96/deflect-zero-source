@@ -15,13 +15,13 @@ function GetAccount() {
 
 
     return (
-        <div>
+        <>
             <Grid container spacing={2} display={"flex"} flexDirection={"column"} margin={"auto"} maxWidth={"400px"} >
                 <div
                     style={{
                         borderRadius: "30px",
                         backgroundColor: "white",
-                        height: "200px",
+                        height: "160px",
                         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                     }}
                 >
@@ -40,7 +40,7 @@ function GetAccount() {
                                 />
                             </Grid>
                         </Grid>
-                        <Grid container spacing={2} columns={16} justifyContent={"center"}>
+                        <Grid  mt={0.1}container spacing={2} columns={16} justifyContent={"center"}>
                             <Grid item xs={12}>
                                 <Button
                                     style={{ color: "white" }}
@@ -50,13 +50,13 @@ function GetAccount() {
                                 >
                                     SUBMIT
                                 </Button>
-                                {handleclick && <DisplayDetails accountNo={accountNumber}/>}
                             </Grid>
                         </Grid>
                     </Box>
                 </div>
             </Grid>
-        </div>
+            {handleclick && <DisplayDetails accountNo={accountNumber}/>}
+        </>
     );
 }
 
