@@ -7,11 +7,11 @@ import DisplayDetails from "./DisplayDetails";
 
 function GetAccount() {
     const [accountNumber, setAccountNumber] = useState(0);
-    const[handleclick,setHandleClick] = useState(false);
+    const [handleclick, setHandleClick] = useState(false);
 
-   const handleClick=()=>{
-    setHandleClick(true);
-   }
+    const handleClick = () => {
+        setHandleClick(true);
+    }
 
 
     return (
