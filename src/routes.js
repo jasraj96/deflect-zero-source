@@ -21,7 +21,7 @@
 */
 
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
+import AccountsMain from "./layouts/accounts/AccountsMain"
 import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
@@ -43,13 +43,14 @@ const routes = [
     route: "/dashboard",
     component: <Dashboard />,
   },
+
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
+    name: "Account",
+    key: "account",
     icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/accounts",
+    component: <AccountsMain />,
   },
   {
     type: "collapse",
