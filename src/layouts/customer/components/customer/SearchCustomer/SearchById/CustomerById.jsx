@@ -41,7 +41,7 @@ export default function Customer() {
                 <Grid>
                     <TextField
                         id="outlined-basic"
-                        label="Id"
+                        label="ID"
                         variant="outlined"
                         size="small"
                         onChange={(e) => {

@@ -132,7 +132,7 @@ const CustomerProfile = () => {
                                 required
                                 onChange={handleChange}
                                 id="outlined-basic"
-                                label="Enter you name"
+                                label="Enter your name"
                                 name="name"
                                 error={(error && customer.name === undefined) || ""}
                                 variant="outlined"
@@ -306,7 +306,7 @@ const CustomerProfile = () => {
                                 required
                                 onChange={handleChange}
                                 id="outlined-basic"
-                                label="Document Id"
+                                label="Document ID"
                                 name="documentID"
                                 error={error && customer.documentID === undefined}
                                 variant="outlined"
@@ -324,7 +324,7 @@ const CustomerProfile = () => {
                                 required
                                 onChange={handleChange}
                                 id="outlined-basic"
-                                label="Id No"
+                                label="ID No"
                                 name="idNo"
                                 error={error && customer.idNo === undefined}
                                 variant="outlined"
