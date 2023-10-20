@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { getBillsTransaction } from "services/getBillTransaction";
+import { getBillsTransaction } from "services/billing.services";
 import { Grid, TextField, FormControl, Typography, Paper } from "@mui/material"
 import { Button, Dialog, DialogTitle, Table, TableContainer, TableCell, DialogContent, TableHead, TableRow, TableBody, DialogActions } from '@mui/material';
 

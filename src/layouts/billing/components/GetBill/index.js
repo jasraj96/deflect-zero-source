@@ -1,4 +1,4 @@
-import { getBills } from "services/getBills";
+import { getBills } from "services/billing.services";
 import { useState } from "react";
 import { Button, Typography, Paper, Dialog, DialogTitle, Table, TableContainer, TableCell, DialogContent, TableHead, TableRow, TableBody, DialogActions } from '@mui/material';
 import Grid from "@mui/system/Unstable_Grid/Grid";
@@ -22,7 +22,7 @@ function GetBill() {
   const handleSubmit = (e) => {
     e.preventDefault()
     getBills(billerId, billId).then((data) => {
-
+      console.log(data)
       setBill(data)
 
     });

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Button, Grid, Paper, Typography, FormControl } from '@mui/material';
-import { postBillTransaction } from 'services/postBillTransaction';
+import { postBillTransaction } from 'services/billing.services';
 function BillTransactionDetails() {
 
   const [billId, setBillId] = useState('');
