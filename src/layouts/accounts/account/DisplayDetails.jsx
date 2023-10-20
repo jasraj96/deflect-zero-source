@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from 'prop-types'
 import DisplayTransactionDetails from "./DisplayTransactionDetails";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,7 +12,8 @@ import { Grid } from "@mui/material";
 import { displayDetails } from "services/accounts.service";
 
 
-function DisplayDetails(accountNo) {
+function DisplayDetails({ accountNo }) {
+
   const [accountContent, setAccountContent] = useState({
     customerId: "",
     accountNumber: "",
@@ -39,7 +41,10 @@ function DisplayDetails(accountNo) {
   console.log(accountContent.accountNumber);
 
   useEffect(() => {
-    displayDetails(accountNo,setAccountContent);
+    (async () => {
+      let data = await displayDetails(accountNo);
+      setAccountContent(data)
+    })()
   }, [accountNo]);
 
   return (
@@ -67,6 +72,10 @@ function DisplayDetails(accountNo) {
       <DisplayTransactionDetails accountNo={accountNo} />
     </div>
   );
+}
+
+DisplayDetails.propTypes = {
+  accountNo: PropTypes.string
 }
 
 export default DisplayDetails;

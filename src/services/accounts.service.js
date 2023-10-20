@@ -13,7 +13,7 @@ export async function createTheAccount(customerId) {
     return data;
 }
 
-export const displayDetails = async (accountNo, setAccountContent) => {
+export const displayDetails = async (accountNo) => {
     try {
         const response = await fetch(
             `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`,
@@ -26,7 +26,7 @@ export const displayDetails = async (accountNo, setAccountContent) => {
         );
 
         let data = await response.json();
-        setAccountContent(data);
+        return data;
     } catch (error) {
         console.error("Error fetching data:", error);
     }
