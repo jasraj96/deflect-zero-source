@@ -1,41 +1,49 @@
-
 import { useState } from "react";
 import { getBillsTransaction } from "services/billing.services";
 import { Grid, TextField, FormControl, Typography, Paper } from "@mui/material"
 import { Button, Dialog, DialogTitle, Table, TableContainer, TableCell, DialogContent, TableHead, TableRow, TableBody, DialogActions } from '@mui/material';
 
 function GetBillTransaction() {
-  const [billId, setBillId] = useState('')
-  const [bill, setBill] = useState([])
-  const [open, setOpen] = useState(false)
-
+  const [billId, setBillId] = useState("");
+  const [bill, setBill] = useState([]);
+  const [open, setOpen] = useState(false);
 
   const handleBillIdChange = (e) => {
-    setBillId(e.target.value)
-  }
+    setBillId(e.target.value);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     getBillsTransaction(billId).then((data) => {
-
-      setBill(data)
-      console.log(bill)
+      setBill(data);
+      console.log(bill);
       setOpen(true);
     });
   };
 
-  console.log(bill)
+  console.log(bill);
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
-  const { billId: bill1, billerId: biller, totalAmount, serviceName, serviceType: serviceTypee, transactionId, paymentStatus, billerAccountNumber } = bill
+  const {
+    billId: bill1,
+    billerId: biller,
+    totalAmount,
+    serviceName,
+    serviceType: serviceTypee,
+    transactionId,
+    paymentStatus,
+    billerAccountNumber,
+  } = bill;
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         {/* <Paper elevation={3} sx={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}> */}
-        <Typography variant="h4" gutterBottom>GET BILL DETAILS</Typography>
+        <Typography variant="h4" gutterBottom>
+          GET BILL DETAILS
+        </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <FormControl fullWidth>
@@ -49,11 +57,16 @@ function GetBillTransaction() {
             </FormControl>
           </Grid>
         </Grid>
-        <Button sx={{
-          maxWidth: '27%', marginTop: '2rem'
-        }} type="submit"
+        <Button
+          sx={{
+            maxWidth: "27%",
+            marginTop: "2rem",
+          }}
+          type="submit"
           variant="contained"
-          color="primary" fullWidth>
+          color="primary"
+          fullWidth
+        >
           Submit
         </Button>
         {/* </Paper> */}
@@ -100,7 +113,6 @@ function GetBillTransaction() {
         </DialogActions>
       </Dialog>
     </>
-
   );
 }
 
