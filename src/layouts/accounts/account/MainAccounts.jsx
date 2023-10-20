@@ -4,18 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-<<<<<<< HEAD:src/layouts/accounts/account/MainAccounts.jsx
 import CreateAccount from './CreateAccount';
 import TransferServiceRequest from './TransferServiceRequest';
 import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import GetAccount from './GetAccount';
-=======
-import CreateAccount from './account/CreateAccount';
-import TransferServiceRequest from './account/TransferServiceRequest';
-import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
-import GetAccount from './account/GetAccount';
->>>>>>> 7d7a9bc0c3cc450b44eba3a25ca34a1f8c8d6caf:src/layouts/accounts/AccountsMain.jsx
-
 
 
 function MainAccounts(props) {
@@ -68,31 +60,16 @@ export default function BasicTabs() {
             <Tab label="TRANSFER DETAILS" {...a11yProps(2)} />
           </Tabs>
         </Box>
-        <Main value={value} index={0}>
-          <CreateAccount />
-        </Main>
-        <Main value={value} index={1}>
-          <GetAccount />
-        </Main>
-        <Main value={value} index={2}>
-          <TransferServiceRequest />
-        </Main>
-
       </Box>
-<<<<<<< HEAD:src/layouts/accounts/account/MainAccounts.jsx
       <MainAccounts value={value} index={0}>
-      <CreateAccount/>
+        <CreateAccount />
       </MainAccounts>
       <MainAccounts value={value} index={1}>
-      <GetAccount/>
+        <GetAccount />
       </MainAccounts>
       <MainAccounts value={value} index={2}>
-       <TransferServiceRequest/>
+        <TransferServiceRequest />
       </MainAccounts>
-     
-    </Box>
-=======
->>>>>>> 7d7a9bc0c3cc450b44eba3a25ca34a1f8c8d6caf:src/layouts/accounts/AccountsMain.jsx
-    </DashboardLayout>
+    </DashboardLayout >
   );
 }
