@@ -1,8 +1,9 @@
 import { Button, FormControl, FormControlLabel, FormLabel, Grid, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useEffect } from 'react';
 
-function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep }) {
+function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep, setAccountnumber, accountnumber, setTriger, trigger }) {
   const [transfer, setTransfer] = useState({
     amount: 0,
     beneficiaryAccountNumber: "",
@@ -13,6 +14,9 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
   })
 
 
+
+
+
   const handleChange = (e) => {
     setTransfer((prevState) => {
       return { ...prevState, [e.target.name]: e.target.name === "amount" ? parseFloat(e.target.value) : e.target.value }
@@ -20,6 +24,7 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
   }
 
   const makeTransfer = async () => {
+    console.log("dsfk", transfer)
     const data = await fetch('http://172.16.4.79:8000/transfer/create-transfer', {
       method: "POST",
       headers: {
@@ -29,13 +34,18 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
     })
 
     await data.json().then(data => {
+      console.log(data)
       setActiveStep(2)
       setTransferresponse(data)
     })
 
   }
 
-
+  useEffect(() => {
+    setTransfer((prevState) => {
+      return { ...prevState, senderAccountNumber: accountnumber }
+    })
+  }, [trigger])
 
 
   console.log(transfer)
@@ -46,6 +56,7 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
         display: "flex",
         flexDirection: "column",
         gap: "10px",
+
         alignItems: "start",
         padding: "20px",
         borderRadius: "13px",
@@ -58,18 +69,22 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
         },
       }}
     >
-      <h3>Enter Transaction Details</h3>
+      <h5>Enter Transaction Details</h5>
       <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "10px" }}>
-        <h4>Transfer from</h4>
-        <div style={{ background: "#e6e4e1", borderRadius: "5px", padding: "15px" }}>
-          <h5>{accountdetails.accountNumber} - {user.name}</h5>
+        <TextField onChange={(e) => { setAccountnumber(e.target.value) }} value={accountnumber} name='accountnumber' fullWidth id="outlined-basic" label="Sender Bank account number" variant="outlined" />
+        <Button onClick={() => { setTriger((prevState) => !prevState) }} fullWidth variant="contained" >
+          SUBMIT
+        </Button>
+        <h6 style={{ fontSize: "15px" }}>Transfer from</h6>
+        <div style={{ background: "#e6e4e1", borderRadius: "5px", padding: "8px", fontSize: "13px" }}>
+          <span>{accountdetails.accountNumber} - {user.name}</span>
         </div>
-        <div style={{ background: "#b8c7ff", borderRadius: "5px", padding: "15px" }}>
-          <h5 style={{ color: "#0037ff" }}>Total available amount is ${accountdetails?.balance}</h5>
+        <div style={{ background: "linear-gradient(195deg, #49a3f1, #1A73E8)", borderRadius: "5px", padding: "8px" }}>
+          <span style={{ color: "white", fontSize: "13px" }}>Total available amount is ${accountdetails?.balance}</span>
         </div>
       </div>
       <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "10px" }}>
-        <h4>Transfer to</h4>
+        <h6 style={{ fontSize: "15px" }}>Transfer to</h6>
 
         <FormControl onChange={handleChange}>
           <FormLabel id="demo-row-radio-buttons-group-label" style={{ fontSize: "13px" }}>Payment Method</FormLabel>
@@ -97,12 +112,8 @@ function TransferCard({ accountdetails, user, setTransferresponse, setActiveStep
         />
       </FormControl>
       <TextField onChange={handleChange} name="comments" value={transfer.comments} fullWidth id="outlined-basic" label="Remarks(optional)" variant="outlined" />
-      <Button sx={{
-        background: "#9107fa", padding: "12px", '&:hover': {
-          background: "#9107fa",
-        },
-      }} onClick={() => { makeTransfer() }} fullWidth variant="contained" endIcon={<ArrowForwardIcon />}>
-        Proceed to pay
+      <Button onClick={() => { makeTransfer() }} fullWidth variant="contained" endIcon={<ArrowForwardIcon />}>
+        Transfer Amount
       </Button>
 
 

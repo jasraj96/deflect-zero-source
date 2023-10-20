@@ -48,6 +48,7 @@ import SignUp from "layouts/authentication/sign-up";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Transfer from "layouts/transfer/Transfer";
+import Transfertab from "layouts/transfer/Transfertab";
 
 
 const routes = [
@@ -81,7 +82,7 @@ const routes = [
     key: "transfer",
     icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
     route: "/transferamount",
-    component: <Transfer />,
+    component: <Transfertab />,
   },
   {
     type: "collapse",

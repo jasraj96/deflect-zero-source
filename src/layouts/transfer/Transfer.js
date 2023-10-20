@@ -23,12 +23,12 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
     },
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            borderColor: '#784af4',
+            borderColor: '#49a3f1',
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            borderColor: '#784af4',
+            borderColor: '#49a3f1',
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -44,10 +44,10 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
     height: 22,
     alignItems: 'center',
     ...(ownerState.active && {
-        color: '#784af4',
+        color: '#49a3f1',
     }),
     '& .QontoStepIcon-completedIcon': {
-        color: '#784af4',
+        color: '#49a3f1',
         zIndex: 1,
         fontSize: 18,
     },
@@ -94,13 +94,15 @@ function Transfer() {
     const [user, setUser] = useState({})
     const [activeStep, setActiveStep] = React.useState(1);
     const [transferresponse, setTransferresponse] = useState({})
+    const [accountnumber, setAccountnumber] = useState(1234232632)
+    const [triger, setTriger] = useState(false)
 
     const steps = ['Enter account details', 'Transaction successful'];
-    useEffect(() => {
 
+    useEffect(() => {
         const getAccountdetails = async () => {
             try {
-                const data = await fetch('http://172.16.4.98:8080/account/get-account?accountNumber=1234232632')
+                const data = await fetch(`http://172.16.4.98:8080/account/get-account?accountNumber=${accountnumber}`)
                 data.json().then(accountdetails => {
                     setAccountdetails(accountdetails)
                     getUser(accountdetails)
@@ -111,52 +113,51 @@ function Transfer() {
             }
 
         }
-
         const getUser = async (accountdetails) => {
             try {
                 const user = await fetch(`http://172.16.4.87:8083/customer-profile/customer?customerId=${accountdetails.customerId}`)
                 await user.json().then(data => {
                     setUser(data)
-
                 })
             } catch (e) {
             }
         }
         getAccountdetails()
-    }, [])
+    }, [triger])
+
 
     return (
-        <DashboardLayout>
-            <Grid container justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} margin={"auto"} rowSpacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
-                <Grid item xs={12} md={8} sm={12} width={"90%"} >
-                    <Stack sx={{ width: '100%' }} spacing={4}>
-                        <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
-                            {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel StepIconComponent={QontoStepIcon}>
-                                        {label}
-                                    </StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
 
-                    </Stack>
-                </Grid>
-                {activeStep === 2 &&
-                    <Grid item xs={9} md={6} sm={8} width={"90%"}>
-                        <IconButton onClick={() => { setActiveStep(1) }}>
-                            <ArrowBackIcon sx={{ fontSize: 30 }}  ></ArrowBackIcon>
-                        </IconButton>
-                    </Grid>}
+        <Grid container justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} margin={"auto"} rowSpacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid item xs={12} md={8} sm={12} width={"100%"} >
+                <Stack sx={{ width: '100%' }} spacing={4}>
+                    <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel StepIconComponent={QontoStepIcon}>
+                                    {label}
+                                </StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
 
-                {activeStep === 1 && <Grid item xs={9} md={8} sm={8} width={"90%"}>
-                    <TransferCard setTransferresponse={setTransferresponse} accountdetails={accountdetails} user={user} setActiveStep={setActiveStep} />
-                </Grid>}
-                {activeStep === 2 && <Grid item xs={9} md={8} sm={8} width={"90%"}>
-                    <Transfersuccesscard transferresponse={transferresponse} />
-                </Grid>}
+                </Stack>
             </Grid>
-        </DashboardLayout>
+            {activeStep === 2 &&
+                <Grid item xs={9} md={6} sm={8} width={"100%"}>
+                    <IconButton onClick={() => { setActiveStep(1) }}>
+                        <ArrowBackIcon sx={{ fontSize: 30 }}  ></ArrowBackIcon>
+                    </IconButton>
+                </Grid>}
+
+            {activeStep === 1 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
+                <TransferCard triger={triger} accountnumber={accountnumber} setTriger={setTriger} setAccountnumber={setAccountnumber} setTransferresponse={setTransferresponse} accountdetails={accountdetails} user={user} setActiveStep={setActiveStep} />
+            </Grid>}
+            {activeStep === 2 && <Grid item xs={9} md={8} sm={8} width={"100%"}>
+                <Transfersuccesscard transferresponse={transferresponse} />
+            </Grid>}
+        </Grid>
+
 
     )
 }

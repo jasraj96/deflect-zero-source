@@ -1,6 +1,7 @@
 .MuiStepper-root {
     background: none !important;
     box-shadow: none !important;
+    padding: 0 !important;
 }
 .Mui-completed {
     color: black !important;
@@ -10,4 +11,10 @@
 }
 .MuiStepLabel-label {
     color: black !important;
+}
+.MuiTableHead-root {
+    display: contents !important;
+}
+th {
+    color: white !important;
 }
