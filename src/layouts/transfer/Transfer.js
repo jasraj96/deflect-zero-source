@@ -119,7 +119,7 @@ function Transfer() {
 
     useEffect(() => {
         getAccountdetails(setAccountdetails, setUser, accountNumber)
-    }, [triger])
+    }, [trigger])
 
     return (
 
