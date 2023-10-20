@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { getBillsTransaction } from "services/GetBillTransaction";
+import { getBillsTransaction } from "services/getBillTransaction";
 import { Grid, TextField, FormControl, Typography, Paper } from "@mui/material"
 import { Button, Dialog, DialogTitle, Table, TableContainer, TableCell, DialogContent, TableHead, TableRow, TableBody, DialogActions } from '@mui/material';
 
@@ -34,29 +34,29 @@ function GetBillTransaction() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Paper elevation={3} sx={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}>
-          <Typography variant="h4" gutterBottom>GET BILL DETAILS</Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  onChange={handleBillIdChange}
-                  type="text"
-                  label="Bill Id"
-                  variant="outlined"
-                  value={billId}
-                />
-              </FormControl>
-            </Grid>
+        {/* <Paper elevation={3} sx={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}> */}
+        <Typography variant="h4" gutterBottom>GET BILL DETAILS</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <TextField
+                onChange={handleBillIdChange}
+                type="text"
+                label="Bill Id"
+                variant="outlined"
+                value={billId}
+              />
+            </FormControl>
           </Grid>
-          <Button sx={{
-            maxWidth: '27%', marginTop: '2rem'
-          }} type="submit"
-            variant="contained"
-            color="primary" fullWidth>
-            Submit
-          </Button>
-        </Paper>
+        </Grid>
+        <Button sx={{
+          maxWidth: '27%', marginTop: '2rem'
+        }} type="submit"
+          variant="contained"
+          color="primary" fullWidth>
+          Submit
+        </Button>
+        {/* </Paper> */}
       </form>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Bill Details</DialogTitle>

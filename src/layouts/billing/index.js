@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import BillForm from './components/BillForm';
 import BillTransactionDetails from './components/BillTransactionDetails';
 import GetBill from './components/GetBill';
@@ -52,27 +53,29 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: '70%', margin: '0 auto' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Bill Form" {...a11yProps(0)} />
-          <Tab label="Get Bill" {...a11yProps(1)} />
-          <Tab label="Bill Transaction Details" {...a11yProps(2)} />
-          <Tab label=" Get Bill Transaction Details" {...a11yProps(3)} />
-        </Tabs>
+    <DashboardLayout>
+      <Box sx={{ margin: '0 auto' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab label="Bill Form" {...a11yProps(0)} />
+            <Tab label="Get Bill" {...a11yProps(1)} />
+            <Tab label="Bill Transaction Details" {...a11yProps(2)} />
+            <Tab label=" Get Bill Transaction Details" {...a11yProps(3)} />
+          </Tabs>
+        </Box>
+        <Billing value={value} index={0}>
+          <BillForm />
+        </Billing>
+        <Billing value={value} index={1}>
+          <GetBill />
+        </Billing>
+        <Billing value={value} index={2}>
+          <BillTransactionDetails />
+        </Billing>
+        <Billing value={value} index={3}>
+          <GetBillTransaction />
+        </Billing>
       </Box>
-      <Billing value={value} index={0}>
-        <BillForm />
-      </Billing>
-      <Billing value={value} index={1}>
-        <GetBill />
-      </Billing>
-      <Billing value={value} index={2}>
-        <BillTransactionDetails />
-      </Billing>
-      <Billing value={value} index={3}>
-        <GetBillTransaction />
-      </Billing>
-    </Box>
+    </DashboardLayout>
   );
 }

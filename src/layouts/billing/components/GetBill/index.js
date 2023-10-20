@@ -39,46 +39,46 @@ function GetBill() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Paper elevation={3} sx={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}>
-          <Typography variant="h4" gutterBottom>GET BILL</Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  type="text"
-                  id="billerId"
-                  label="Biller ID"
-                  variant="outlined"
-                  value={billerId}
-                  onChange={handleBillerIdChange}
-                />
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  type="text"
-                  id="billId"
-                  label="Bill ID"
-                  variant="outlined"
-                  value={billId}
-                  onChange={handleBillIdChange}
-                />
-              </FormControl>
-            </Grid>
+        {/* <Paper elevation={3} sx={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}> */}
+        <Typography variant="h4" gutterBottom>GET BILL</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <TextField
+                type="text"
+                id="billerId"
+                label="Biller ID"
+                variant="outlined"
+                value={billerId}
+                onChange={handleBillerIdChange}
+              />
+            </FormControl>
           </Grid>
-          <Button sx={{
-            maxWidth: '27%',
-            marginTop: '2rem',
-            color: 'white'
-          }}
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth>
-            Submit
-          </Button>
-        </Paper>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <TextField
+                type="text"
+                id="billId"
+                label="Bill ID"
+                variant="outlined"
+                value={billId}
+                onChange={handleBillIdChange}
+              />
+            </FormControl>
+          </Grid>
+        </Grid>
+        <Button sx={{
+          maxWidth: '27%',
+          marginTop: '2rem',
+          color: 'white'
+        }}
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth>
+          Submit
+        </Button>
+        {/* </Paper> */}
       </form>
 
       <Dialog open={open} onClose={handleClose}>
