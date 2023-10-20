@@ -1,5 +1,6 @@
 import React from "react";
 import '../account/card.css';
+import TransferServiceRequest from "./TransferServiceRequest";
 
 
 function Card(transferData) {

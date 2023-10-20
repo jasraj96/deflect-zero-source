@@ -1,25 +1,26 @@
 import { TableCell, TableRow, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { displayTransaction } from "services/accounts.service";
 
 function DisplayTransactionDetails(accountNo) {
     const [transactions, setTransactions] = useState([]);
 
-    const displayTransaction = async () => {
-        try {
-            const response = await fetch(`https://1c89-103-141-55-30.ngrok-free.app/account/get-ledger?accountNumber=${accountNo}`);
+    // const displayTransaction = async () => {
+    //     try {
+    //         const response = await fetch(`https://1c89-103-141-55-30.ngrok-free.app/account/get-ledger?accountNumber=${accountNo}`);
 
-            await response.json().then((data) => {
-                setTransactions(data);
-            });
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
+    //         await response.json().then((data) => {
+    //             setTransactions(data);
+    //         });
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     }
+    // };
 
     console.log(accountNo);
 
     useEffect(() => {
-        displayTransaction();
+        displayTransaction(accountNo,setTransactions);
     }, [accountNo]);
 
     return (

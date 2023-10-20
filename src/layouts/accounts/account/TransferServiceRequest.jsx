@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Card from './Card';
+import { transferServiceRequest } from 'services/accounts.service';
 
 function TransferServiceRequest() {
 
@@ -26,31 +27,31 @@ function TransferServiceRequest() {
     })
   };
 
-  const transferServiceRequest = async () => {
-    try {
-      const response = await fetch(
-        `https://1c89-103-141-55-30.ngrok-free.app/account/get-transaction`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/JSON"
-          },
+  // const transferServiceRequest = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://1c89-103-141-55-30.ngrok-free.app/account/get-transaction`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/JSON"
+  //         },
 
-          body: JSON.stringify(transferDetails)
-        }
+  //         body: JSON.stringify(transferDetails)
+  //       }
 
-      );
+  //     );
 
-      await response.json().then(data => {
-        setTransferData(data)
-      })
+  //     await response.json().then(data => {
+  //       setTransferData(data)
+  //     })
 
 
 
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
   console.log(transferDetails)
 
   return (
@@ -71,7 +72,7 @@ function TransferServiceRequest() {
             <TextField fullWidth id="outlined-basic" label="transferId" name='transferId' variant="outlined" value={transferDetails.transferId} onChange={handleChange} />
           </Grid>
           <Grid item xs={6}>
-            <Button style={{ color: "white" }} fullWidth variant="contained" onClick={transferServiceRequest}>SUBMIT</Button>
+            <Button style={{ color: "white" }} fullWidth variant="contained" onClick={() =>{setTransferData(transferServiceRequest(transferDetails))}}>SUBMIT</Button>
           </Grid>
         </Grid>
       </Box>

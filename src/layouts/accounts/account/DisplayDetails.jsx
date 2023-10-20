@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from 'prop-types'
 import DisplayTransactionDetails from "./DisplayTransactionDetails";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,9 +9,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
+import { displayDetails } from "services/accounts.service";
 
 
-function DisplayDetails(accountNo) {
+function DisplayDetails({ accountNo }) {
+
   const [accountContent, setAccountContent] = useState({
     customerId: "",
     accountNumber: "",
@@ -21,24 +24,27 @@ function DisplayDetails(accountNo) {
 
 
 
-  const displayDetails = async () => {
-    try {
-      const response = await fetch(
-        `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`
-      );
+  // const displayDetails = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://1c89-103-141-55-30.ngrok-free.app/account/get-account?accountNumber=${accountNo}`
+  //     );
 
-      let data = await response.json();
-      setAccountContent(data);
+  //     let data = await response.json();
+  //     setAccountContent(data);
 
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
   console.log(accountNo)
   console.log(accountContent.accountNumber);
 
   useEffect(() => {
-    displayDetails();
+    (async () => {
+      let data = await displayDetails(accountNo);
+      setAccountContent(data)
+    })()
   }, [accountNo]);
 
   return (
@@ -66,6 +72,10 @@ function DisplayDetails(accountNo) {
       <DisplayTransactionDetails accountNo={accountNo} />
     </div>
   );
+}
+
+DisplayDetails.propTypes = {
+  accountNo: PropTypes.string
 }
 
 export default DisplayDetails;
